@@ -48,7 +48,7 @@ $this->registerCssFile('@web/css/main.css');
         <div class="mt-4 d-flex w-100 flex-row justify-content-between">
             <?php foreach ($books as $book):?>
             <div class="w-100 h-25 d-flex flex-column justify-content-between align-items-center">
-                <img src="images/<?php echo $book['image']?>" style="width: 12rem; height: 17rem; mix-blend-mode: multiply;">
+                <img src="images/<?php echo $book['image']?>" style="width: 12rem; height: 17rem; mix-blend-mode: multiply;+">
                 <p class="mt-2 fw-bold text-center" style="white-space: nowrap;"><?php echo $book['name']?></p>
                 <p><small><?php echo $book->genre->name?></small></p>
                 <p><small><?php echo $book['year']?></small></p>
@@ -58,4 +58,5 @@ $this->registerCssFile('@web/css/main.css');
     </div>
     <a href="#" class="text-reset fs-4 mb-5">Показать все</a>
 </div>
+
 

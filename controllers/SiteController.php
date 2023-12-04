@@ -3,7 +3,9 @@
 namespace app\controllers;
 
 use app\models\Book;
+use app\models\Category;
 use app\models\News;
+use app\models\RegisterForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -92,6 +94,22 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionRegister()
+    {
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
+        $model = new RegisterForm();
+        if ($model->load(Yii::$app->request->post()) && $model->register()) {
+            return $this->goHome();
+        }
+
+        return $this->render('register', [
+            'model' => $model,
+        ]);
+    }
+
     /**
      * Logout action.
      *
@@ -129,7 +147,28 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
-        $this->layout = 'main';
-        return $this->render('about');
+        $books = Book::find()->orderBy('date_add desc')->limit(5)->all();
+        $categories = Category::find()->all();
+        return $this->render('about', ['books'=>$books, 'categories'=>$categories]);
+    }
+    public function actionBook()
+    {
+        if (isset($_GET['id']) && $_GET['id']!="")
+        {
+            $categories = Category::find()->where(['id'=>$_GET['id']])->asArray()->one();
+
+            $books = Book::find()->where(['genre_id'=>$_GET['id']])->all();
+
+            //$sect = Section::find()->where(['id'=>$_GET['id']])->asArray()->all();
+            //return $this->render('section', compact('categories', 'sections'));
+
+            return $this->render('book', [
+                'books' => $books,
+                //'sect' => $sect,
+                'categories' => $categories,
+            ]);
+        }
+        else
+            return $this->redirect(['site/about']);
     }
 }
