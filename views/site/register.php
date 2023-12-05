@@ -2,7 +2,6 @@
 
 /** @var yii\web\View $this */
 /** @var yii\bootstrap5\ActiveForm $form */
-
 /** @var app\models\RegisterForm $model */
 
 use yii\bootstrap5\ActiveForm;
@@ -13,14 +12,19 @@ $this->title = 'Регистрация';
 ?>
 <style>
     .btn{
-        background: #40176C;
+        background: #745544;
         color: white;
+    }
+    body{
+        background-image: url("images/reg.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
     }
 </style>
 <div class="d-flex justify-content-center mt-3">
-    <div class="card w-100 align-items-center shadow p-3 mb-5 rounded">
+    <div class="card w-75 mt-5 align-items-center shadow p-3 mb-5 rounded" style="background-color: #eee4e4;">
         <div class="card-body w-100">
-            <h1><?= Html::encode($this->title) ?></h1>
+            <h1 style="color: #745544;"><?= Html::encode($this->title) ?></h1>
 
             <p>Пожалуйста заполните все поля, чтобы зарегистрироваться:</p>
 
@@ -31,7 +35,7 @@ $this->title = 'Регистрация';
 
                 ],
             ]); ?>
-            <div class="d-flex flex-column w-75 justify-content-between">
+            <div class="d-flex flex-column w-100 justify-content-between">
                 <div class="d-flex justify-content-between">
                     <div class="w-50 me-5"><?= $form->field($model, 'surname')->textInput(['autofocus' => true]) ?></div>
                     <div class="w-50 me-5"><?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?></div>
@@ -57,7 +61,7 @@ $this->title = 'Регистрация';
 
                 <div class="form-group mt-3">
                     <div>
-                        <?= Html::submitButton('Зарегистрироваться', ['class' => 'btn btn-dark', 'name' => 'login-button']) ?>
+                        <?= Html::submitButton('Зарегистрироваться', ['class' => 'btn btn-light', 'name' => 'login-button']) ?>
                     </div>
                 </div>
 

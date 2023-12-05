@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Application;
 use app\models\Book;
 use app\models\Category;
 use app\models\News;
@@ -127,17 +128,34 @@ class SiteController extends Controller
      *
      * @return Response|string
      */
-    public function actionContact()
+    public function actionApplication()
     {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
+        $model = new Application();
+        if ($model->load(Yii::$app->request->post())) {
+            Yii::$app->session->setFlash('success', 'Ваша заявка отправлена');
+            $model->save();
             return $this->refresh();
         }
-        return $this->render('contact', [
+        return $this->render('application', [
             'model' => $model,
         ]);
+
+        /*$form = new Records();
+
+        if ($form->load(Yii::$app->request->post()) && $form->validate()) {
+            $child = new Children();
+            $child->attributes = $form->childAttributes;
+            $child->save(false);
+
+            $profile = new Records();
+            $profile->attributes = $form->profileAttributes;
+            //$profile->children_id = $children->id;
+            $profile->save(false);
+
+            return $this->redirect(['record']);
+        }
+
+        return $this->render('record', ['model' => $form]);*/
     }
 
     /**

@@ -51,6 +51,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         'items' => [
             ['label' => 'Главная', 'url' => ['/site/index']],
             ['label' => 'Каталог книг', 'url' => ['/site/about']],
+            ['label' => 'Онлайн продление книги', 'url' => ['/site/application']],
             Yii::$app->user->isGuest ? (''): (Yii::$app->user->identity->isAdmin() ? (['label' => 'Личный кабинет', 'url' => ['/site/kabinet']]) :
                 (['label' => 'Личный кабинет', 'url' => ['/site/kabinet']])),
             ['label' => 'Регистрация', 'url' => ['/site/register'], 'visible'=> Yii::$app->user->isGuest],

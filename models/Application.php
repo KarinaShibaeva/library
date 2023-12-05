@@ -15,6 +15,7 @@ use Yii;
  * @property string $reader_ticket
  * @property string $date
  * @property string $book
+ * @property string $author
  * @property int|null $user_id
  *
  * @property User $user
@@ -35,10 +36,12 @@ class Application extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['surname', 'name', 'email', 'reader_ticket', 'date', 'book'], 'required'],
+            [['surname', 'name', 'email', 'reader_ticket', 'date', 'book', 'author'], 'required'],
             [['date'], 'safe'],
             [['book'], 'string'],
+            [['patronymic'], 'string'],
             [['user_id'], 'integer'],
+            ['user_id', 'default', 'value' => Yii::$app->user->getId()],
             [['surname', 'name', 'patronymic', 'email', 'reader_ticket'], 'string', 'max' => 256],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
         ];
@@ -51,13 +54,14 @@ class Application extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'surname' => Yii::t('app', 'Surname'),
-            'name' => Yii::t('app', 'Name'),
-            'patronymic' => Yii::t('app', 'Patronymic'),
+            'surname' => Yii::t('app', 'Фамилия'),
+            'name' => Yii::t('app', 'Имя'),
+            'patronymic' => Yii::t('app', 'Отчество'),
             'email' => Yii::t('app', 'Email'),
-            'reader_ticket' => Yii::t('app', 'Reader Ticket'),
-            'date' => Yii::t('app', 'Date'),
-            'book' => Yii::t('app', 'Book'),
+            'reader_ticket' => Yii::t('app', 'Номер читательского билета'),
+            'date' => Yii::t('app', 'Дата продления'),
+            'book' => Yii::t('app', 'Название книги'),
+            'author' => Yii::t('app', 'Автор'),
             'user_id' => Yii::t('app', 'User ID'),
         ];
     }
