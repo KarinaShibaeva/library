@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 04 2023 г., 23:49
+-- Время создания: Дек 05 2023 г., 22:31
 -- Версия сервера: 10.8.4-MariaDB
 -- Версия PHP: 8.1.9
 
@@ -36,8 +36,17 @@ CREATE TABLE `application` (
   `reader_ticket` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL,
   `date` date NOT NULL,
   `book` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `author` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `application`
+--
+
+INSERT INTO `application` (`id`, `surname`, `name`, `patronymic`, `email`, `reader_ticket`, `date`, `book`, `author`, `user_id`) VALUES
+(1, 'Иванов', 'Иван', 'Иванович', 'ivan@mail.ru', '155284895959', '2024-03-02', 'Шерлок Холмс', '', NULL),
+(2, 'Иванов', 'Иван', 'Иванович', 'ivan@mail.ru', '8523685216', '2022-10-14', 'Шерлок Холмс', 'Артур Конан Дойл', NULL);
 
 -- --------------------------------------------------------
 
@@ -264,7 +273,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT для таблицы `application`
 --
 ALTER TABLE `application`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `author`
