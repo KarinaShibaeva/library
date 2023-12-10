@@ -17,6 +17,7 @@ use Yii;
  * @property string $book
  * @property string $author
  * @property int|null $user_id
+ * @property int $status
  *
  * @property User $user
  */
@@ -39,10 +40,9 @@ class Application extends \yii\db\ActiveRecord
             [['surname', 'name', 'email', 'reader_ticket', 'date', 'book', 'author'], 'required'],
             [['date'], 'safe'],
             [['book'], 'string'],
-            [['patronymic'], 'string'],
-            [['user_id'], 'integer'],
+            [['user_id', 'status'], 'integer'],
             ['user_id', 'default', 'value' => Yii::$app->user->getId()],
-            [['surname', 'name', 'patronymic', 'email', 'reader_ticket'], 'string', 'max' => 256],
+            [['surname', 'name', 'patronymic', 'email', 'reader_ticket', 'author'], 'string', 'max' => 256],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
@@ -63,6 +63,7 @@ class Application extends \yii\db\ActiveRecord
             'book' => Yii::t('app', 'Название книги'),
             'author' => Yii::t('app', 'Автор'),
             'user_id' => Yii::t('app', 'User ID'),
+            'status' => Yii::t('app', 'Status'),
         ];
     }
 
@@ -74,5 +75,26 @@ class Application extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::class, ['id' => 'user_id']);
+    }
+
+    public function getStatus()
+    {
+        switch ($this->status){
+            case 0:return'Ожидание';
+            case 1:return'Принято';
+            case 2:return'Отклонено';
+        }
+    }
+
+    public function good()
+    {
+        $this->status = 1;
+        return $this->save(false);
+    }
+
+    public function verybad()
+    {
+        $this->status = 2;
+        return $this->save(false);
     }
 }

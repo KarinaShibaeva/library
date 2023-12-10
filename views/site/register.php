@@ -16,7 +16,7 @@ $this->title = 'Регистрация';
         color: white;
     }
     body{
-        background-image: url("images/reg.jpg");
+        background-image: url("../images/reg.jpg");
         background-size: cover;
         background-repeat: no-repeat;
     }

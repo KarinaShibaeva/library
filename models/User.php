@@ -110,4 +110,13 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     {
         $this->password = \Yii::$app->security->generatePasswordHash($password);
     }
+    public function getApplication()
+    {
+        return $this->hasMany(Application::class, ['user_id' => 'id']);
+    }
+
+    public function isAdmin()
+    {
+        return $this->is_admin===1;
+    }
 }

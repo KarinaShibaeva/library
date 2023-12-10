@@ -74,7 +74,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="mt-4 d-flex w-100 flex-row justify-content-between">
             <?php foreach ($books as $book):?>
                 <div class="w-100 d-flex flex-column align-items-center">
-                    <img src="images/<?php echo $book['image']?>" style="width: 12rem; height: 17rem; mix-blend-mode: multiply;+">
+                    <img src="../images/<?php echo $book['image']?>" style="width: 12rem; height: 17rem; mix-blend-mode: multiply;+">
                     <p class="mt-1 fw-bold text-center" style="white-space: nowrap;"><?php echo $book['name']?></p>
                     <p class="text-center" style="white-space: nowrap;"><?= $book->author->name ?> <?= $book->author->surname ?></p>
                 </div>

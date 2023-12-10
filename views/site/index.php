@@ -27,13 +27,13 @@ $this->registerCssFile('@web/css/main.css');
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row no-gutters">
                     <div class="col-md-4">
-                        <img src="images/<?php echo $news['image']?>" class="card-img" alt="Изображение новости">
+                        <img src="../images/<?php echo $news['image']?>" class="card-img" alt="Изображение новости">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $news['title']?></h5>
                             <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><?php echo $news['content']?></p>
-                            <a href="#" class="btn text-light fw-bold" style="background-color: #583c2d">Подробнее</a>
+                            <a href="<?php echo Url::toRoute(['site/news', 'id'=>$news->id]) ?>" class="btn text-light fw-bold" style="background-color: #583c2d">Подробнее</a>
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@ $this->registerCssFile('@web/css/main.css');
         <div class="mt-4 d-flex w-100 flex-row justify-content-between">
             <?php foreach ($books as $book):?>
             <div class="w-100 h-25 ms-4 d-flex flex-column justify-content-between align-items-center">
-                <img src="images/<?php echo $book['image']?>" style="width: 12rem; height: 17rem; mix-blend-mode: multiply;+">
+                <img src="../images/<?php echo $book['image']?>" style="width: 12rem; height: 17rem; mix-blend-mode: multiply;+">
                 <p class="mt-2 fw-bold text-center"><?php echo $book['name']?></p>
                 <p><small><?php echo $book->genre->name?></small></p>
                 <p><small><?php echo $book['year']?></small></p>

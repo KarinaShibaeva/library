@@ -52,6 +52,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             ['label' => 'Главная', 'url' => ['/site/index']],
             ['label' => 'Каталог книг', 'url' => ['/site/about']],
             ['label' => 'Онлайн продление книги', 'url' => ['/site/application']],
+            ['label' => 'Новости', 'url' => ['/site/newslist']],
             Yii::$app->user->isGuest ? (''): (Yii::$app->user->identity->isAdmin() ? (['label' => 'Личный кабинет', 'url' => ['/site/kabinet']]) :
                 (['label' => 'Личный кабинет', 'url' => ['/site/kabinet']])),
             ['label' => 'Регистрация', 'url' => ['/site/register'], 'visible'=> Yii::$app->user->isGuest],
@@ -114,7 +115,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                             <p>Выходной</p>
                         </div>
                     </div>
-                    <img src="images/logolibrary.png" style="width: 20rem; height: 100%;">
+                    <img src="../images/logolibrary.png" style="width: 20rem; height: 100%;">
                 </div>
             </div>
             <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">

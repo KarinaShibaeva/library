@@ -72,6 +72,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <hr>
         <div class="mt-4 d-flex flex-row">
             <?php foreach ($books as $book):?>
+            <a href="<?php echo Url::toRoute(['site/details', 'id'=>$book->id]) ?>">
                 <div class="card mb-5 ms-4">
                     <div class="face face1">
                         <div class="content">
@@ -80,8 +81,9 @@ $this->params['breadcrumbs'][] = $this->title;
                             <p class="text-light text-center"><?= $book->author->name ?> <?= $book->author->surname ?></p>
                         </div>
                     </div>
-                    <div class="face face2" style="background-image: url('images/<?php echo $book['image']?>'); background-size: cover; "></div>
+                    <div class="face face2" style="background-image: url('../images/<?php echo $book['image']?>'); background-size: cover; "></div>
                 </div>
+            </a>
             <?php endforeach;?>
         </div>
     </div>
@@ -91,6 +93,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <hr>
         <div class="mt-4 d-flex flex-row">
             <?php foreach ($category->books as $book): ?>
+            <a href="<?php echo Url::toRoute(['site/details', 'id'=>$book->id]) ?>">
                 <div class="card mb-5 ms-4">
                     <div class="face face1">
                         <div class="content">
@@ -99,8 +102,9 @@ $this->params['breadcrumbs'][] = $this->title;
                             <p class="text-light text-center"><?= $book->author->name ?> <?= $book->author->surname ?></p>
                         </div>
                     </div>
-                    <div class="face face2" style="background-image: url('images/<?php echo $book['image']?>'); background-size: cover; "></div>
+                    <div class="face face2" style="background-image: url('../images/<?php echo $book['image']?>'); background-size: cover; "></div>
                 </div>
+            </a>
             <?php endforeach; ?>
         </div>
         <a href="<?php echo Url::toRoute(['site/book', 'id'=>$category['id']]); ?>" class="text-dark text-center">Показать еще</a>

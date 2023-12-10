@@ -36,7 +36,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         width: 100%;
         height: 100%;
     }
-    .btn{
+    .btn-light{
         position: absolute; top: 75%; left: 50%; transform: translate(-50%, -50%);
     }
     .navbar-expand-md{
@@ -59,6 +59,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             ['label' => 'Главная', 'url' => ['/site/index']],
             ['label' => 'Каталог книг', 'url' => ['/site/about']],
             ['label' => 'Онлайн продление книги', 'url' => ['/site/application']],
+            ['label' => 'Новости', 'url' => ['/site/newslist']],
             ['label' => 'Регистрация', 'url' => ['/site/register'], 'visible'=> Yii::$app->user->isGuest],
             Yii::$app->user->isGuest
                 ? ['label' => 'Войти', 'url' => ['/site/login']]
@@ -122,7 +123,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                             <p>Выходной</p>
                         </div>
                     </div>
-                    <img src="images/logolibrary.png" style="width: 20rem; height: 100%;">
+                    <img src="../images/logolibrary.png" style="width: 20rem; height: 100%;">
                 </div>
             </div>
             <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">

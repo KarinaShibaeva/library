@@ -49,4 +49,10 @@ class News extends \yii\db\ActiveRecord
             'date' => Yii::t('app', 'Date'),
         ];
     }
+
+    public function getComments()
+    {
+        return $this->hasMany(Comment::className(), ['news_id' => 'id']);
+    }
+
 }

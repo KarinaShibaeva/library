@@ -23,7 +23,7 @@ $this->title = 'Отправка заявки на продление книги
         color: white;
     }
     body{
-        background-image: url("images/app.jpg");
+        background-image: url("../images/app.jpg");
         background-size: cover;
         background-repeat: no-repeat;
     }

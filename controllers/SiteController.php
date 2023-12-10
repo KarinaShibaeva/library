@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\Application;
 use app\models\Book;
 use app\models\Category;
+use app\models\Comment;
 use app\models\News;
 use app\models\RegisterForm;
 use Yii;
@@ -86,7 +87,10 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            if(Yii::$app->user->identity->isAdmin()){
+                return $this->redirect(['/admin']);
+            }
+            return $this->redirect(['/site/kabinet']);
         }
 
         $model->password = '';
@@ -169,6 +173,26 @@ class SiteController extends Controller
         $categories = Category::find()->all();
         return $this->render('about', ['books'=>$books, 'categories'=>$categories]);
     }
+
+    public function actionDetails()
+    {
+        if(isset($_GET['id']) && $_GET['id']!=""){
+            $categories = Category::find()->where(['id'=>$_GET['id']])->asArray()->one();
+            $books = Book::find()->where(['id'=>$_GET['id']])->all();
+
+            //$teachers = Teacher::find()->all();
+
+
+            return $this->render('details', [
+                'categories'=>$categories,
+                'books'=>$books,
+            ]);
+
+        }
+        else
+            return $this->redirect(['site/about']);
+    }
+
     public function actionBook()
     {
         if (isset($_GET['id']) && $_GET['id']!="")
@@ -189,4 +213,53 @@ class SiteController extends Controller
         else
             return $this->redirect(['site/about']);
     }
+
+    public function actionNews()
+    {
+        if (isset($_GET['id']) && $_GET['id']!="")
+        {
+            $new = News::find()->where(['id'=>$_GET['id']])->all();
+
+            $model = new Comment();
+            $comments = Comment::find()->orderBy('id desc')->all();
+            $goodstatus = Comment::find()->where(['status'=>1])->all();
+            if ($model->load(Yii::$app->request->post()) && $model->saveComment()) {
+                Yii::$app->session->setFlash('success', 'Ваш отзыв успешно отправлен!');
+
+                return $this->refresh();
+            }
+            $count = count($comments);
+            return $this->render('news', [
+                'new' => $new,
+                'comments' => $comments,
+                'model' => $model,
+                'count' => $count,
+                'goodstatus' => $goodstatus
+            ]);
+        }
+        else
+            return $this->redirect(['site/about']);
+    }
+
+    public function actionNewslist()
+    {
+        $posts = News::find()->all();
+        return $this->render('newslist', ['posts' => $posts]);
+    }
+
+    public function actionKabinet()
+    {
+        $applications = Application::find()->where(['user_id' => Yii::$app->user->id])->all();
+
+        if(count($applications) === 0) {
+            // Сохраняем сообщение во флэш-памяти
+            Yii::$app->session->setFlash('noRequests', 'Добро пожаловать в личный кабинет! Ваши заявки будут отображаться здесь, как только вы их отправите.');
+        }
+
+        return $this->render('kabinet', [
+            'applications' => $applications,
+        ]);
+
+    }
+
 }
