@@ -11,10 +11,6 @@ use yii\bootstrap5\Html;
 $this->title = 'Авторизация';
 ?>
 <style>
-    .btn{
-        background: #745544;
-        color: white;
-    }
     body{
         background-image: url("../images/login.jpg");
         background-size: cover;
@@ -44,7 +40,7 @@ $this->title = 'Авторизация';
 
             <div class="form-group">
                 <div>
-                    <?= Html::submitButton('Войти', ['class' => 'btn btn-light', 'name' => 'login-button']) ?>
+                    <?= Html::submitButton('Войти', ['class' => 'btn btn-light', 'style' => 'background: #745544; color: white;', 'name' => 'login-button']) ?>
                 </div>
             </div>
 

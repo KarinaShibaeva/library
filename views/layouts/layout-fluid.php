@@ -60,6 +60,8 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             ['label' => 'Каталог книг', 'url' => ['/site/about']],
             ['label' => 'Онлайн продление книги', 'url' => ['/site/application']],
             ['label' => 'Новости', 'url' => ['/site/newslist']],
+            Yii::$app->user->isGuest ? (''): (Yii::$app->user->identity->isAdmin() ? (['label' => 'Личный кабинет', 'url' => ['/site/kabinet']]) :
+                (['label' => 'Личный кабинет', 'url' => ['/site/kabinet']])),
             ['label' => 'Регистрация', 'url' => ['/site/register'], 'visible'=> Yii::$app->user->isGuest],
             Yii::$app->user->isGuest
                 ? ['label' => 'Войти', 'url' => ['/site/login']]
@@ -79,11 +81,11 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 
 <main id="main" role="main">
     <div class="container d-flex justify-content-center align-items-center">
-        <a class="btn btn-light fs-5 fw-bold" style="color: #583c2d; width: 15rem">Каталог книг</a>
+        <a class="btn btn-light fs-5 fw-bold" href="<?php echo \yii\helpers\Url::toRoute(['site/about'])?>" style="color: #583c2d; width: 15rem">Каталог книг</a>
     </div>
     <div class="content" style="margin-top: 30rem">
         <?= $content ?>
-        <footer class="text-white text-center text-lg-start" style="background-color: #583c2d">
+        <footer class="text-white text-center text-lg-start" style="background-color: #583c2d;  margin-top: -1px;">
             <div class="container p-4">
                 <div class="d-flex flex-row">
                     <div class="col-lg-6 col-md-12 mb-4 mb-md-0">

@@ -4,11 +4,13 @@ namespace app\controllers;
 
 use app\models\Application;
 use app\models\Book;
+use app\models\Booking;
 use app\models\Category;
 use app\models\Comment;
 use app\models\News;
 use app\models\RegisterForm;
 use Yii;
+use yii\data\Pagination;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
@@ -143,23 +145,6 @@ class SiteController extends Controller
         return $this->render('application', [
             'model' => $model,
         ]);
-
-        /*$form = new Records();
-
-        if ($form->load(Yii::$app->request->post()) && $form->validate()) {
-            $child = new Children();
-            $child->attributes = $form->childAttributes;
-            $child->save(false);
-
-            $profile = new Records();
-            $profile->attributes = $form->profileAttributes;
-            //$profile->children_id = $children->id;
-            $profile->save(false);
-
-            return $this->redirect(['record']);
-        }
-
-        return $this->render('record', ['model' => $form]);*/
     }
 
     /**
@@ -206,7 +191,6 @@ class SiteController extends Controller
 
             return $this->render('book', [
                 'books' => $books,
-                //'sect' => $sect,
                 'categories' => $categories,
             ]);
         }
@@ -243,13 +227,20 @@ class SiteController extends Controller
 
     public function actionNewslist()
     {
-        $posts = News::find()->all();
-        return $this->render('newslist', ['posts' => $posts]);
+        $query = News::find();
+        $count = clone $query;
+        $pages = new Pagination(['totalCount'=>$count->count(), 'pageSize'=>3]);
+        $posts = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+
+        return $this->render('newslist', ['posts' => $posts, 'pages' => $pages]);
     }
 
     public function actionKabinet()
     {
         $applications = Application::find()->where(['user_id' => Yii::$app->user->id])->all();
+        $bookings = Booking::find()->where(['user_id' => Yii::$app->user->id])->all();
 
         if(count($applications) === 0) {
             // Сохраняем сообщение во флэш-памяти
@@ -258,8 +249,22 @@ class SiteController extends Controller
 
         return $this->render('kabinet', [
             'applications' => $applications,
+            'bookings' => $bookings,
         ]);
 
+    }
+
+    public function actionBooking()
+    {
+        $model = new Booking();
+        if ($model->load(Yii::$app->request->post())) {
+            Yii::$app->session->setFlash('success', 'Ваша запись успешно отправлена!');
+            $model->saveBooking();
+            return $this->refresh();
+        }
+        return $this->render('booking', [
+            'model'=>$model,
+        ]);
     }
 
 }

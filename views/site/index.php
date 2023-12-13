@@ -9,6 +9,11 @@ $this->title = 'My Yii Application';
 $this->registerCssFile('@web/css/main.css');
 ?>
 <style>
+    .card-img-top {
+        width: 100%;
+        height: 15vw;
+        object-fit: cover;
+    }
 </style>
 <div class="content" style="background-color: #eee4e4">
     <div class="d-flex flex-column">
@@ -27,7 +32,7 @@ $this->registerCssFile('@web/css/main.css');
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row no-gutters">
                     <div class="col-md-4">
-                        <img src="../images/<?php echo $news['image']?>" class="card-img" alt="Изображение новости">
+                        <img src="../images/<?php echo $news['image']?>" class="card-img-top" alt="Изображение новости">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -40,7 +45,7 @@ $this->registerCssFile('@web/css/main.css');
             </div>
         <?php endforeach;?>
     </div>
-    <a href="#" class="text-reset fs-4 mb-5">Показать все</a>
+    <a href="<?php echo Url::toRoute(['site/newslist'])?>" class="text-reset fs-4 mb-5">Показать все</a>
 </div>
 <div class="content d-flex flex-column justify-content-center align-items-center" style="background-color: #eee4e4">
     <div class="d-flex flex-column">
@@ -48,15 +53,17 @@ $this->registerCssFile('@web/css/main.css');
         <div class="mt-4 d-flex w-100 flex-row justify-content-between">
             <?php foreach ($books as $book):?>
             <div class="w-100 h-25 ms-4 d-flex flex-column justify-content-between align-items-center">
+                <a href="<?php echo Url::toRoute(['site/details', 'id'=>$book->id]) ?>"  class="text-dark text-decoration-none d-flex flex-column align-items-center justify-content-center">
                 <img src="../images/<?php echo $book['image']?>" style="width: 12rem; height: 17rem; mix-blend-mode: multiply;+">
                 <p class="mt-2 fw-bold text-center"><?php echo $book['name']?></p>
                 <p><small><?php echo $book->genre->name?></small></p>
                 <p><small><?php echo $book['year']?></small></p>
+                </a>
             </div>
             <?php endforeach;?>
         </div>
     </div>
-    <a href="#" class="text-reset fs-4 mb-5">Показать все</a>
+    <a href="<?php echo Url::toRoute(['site/book'])?>" class="text-reset fs-4 mb-5">Показать все</a>
 </div>
 
 

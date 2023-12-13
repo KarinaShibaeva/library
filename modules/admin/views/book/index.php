@@ -10,15 +10,15 @@ use yii\grid\GridView;
 /** @var app\modules\admin\BookSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = Yii::t('app', 'Books');
+$this->title = Yii::t('app', 'Книги');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="book-index">
+<div class="book-index" style="margin-top: 8rem;">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Book'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Добавить книгу'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'name',
-            'description:ntext',
+            //'description:ntext',
             'author_id',
             'year',
             //'genre_id',

@@ -36,7 +36,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <header id="header">
     <?php
     NavBar::begin([
-        'brandLabel' => '<img src="../images/logolibrary.png" style="width: 140px; height: 40px">',
+        'brandLabel' => 'Bookland',
         'brandUrl' => ['default/index'],
         'options' => ['class' => 'navbar-expand-md navbar-dark fixed-top']
     ]);
@@ -49,7 +49,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                 . Html::beginForm(['/site/logout'])
                 . Html::submitButton(
                     'Выйти',
-                    ['class' => 'nav-link btn btn-link logout']
+                    ['class' => 'nav-link logout']
                 )
                 . Html::endForm()
                 . '</li>'
@@ -69,14 +69,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     </div>
 </main>
 
-<footer id="footer" class="mt-auto py-3 bg-light">
-    <div class="container">
-        <div class="row text-muted">
-            <div class="col-md-6 text-center text-md-start">&copy; My Company <?= date('Y') ?></div>
-            <div class="col-md-6 text-center text-md-end"><?= Yii::powered() ?></div>
-        </div>
-    </div>
-</footer>
 
 <?php $this->endBody() ?>
 </body>

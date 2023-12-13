@@ -42,9 +42,9 @@ class Author extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'surname' => Yii::t('app', 'Surname'),
-            'name' => Yii::t('app', 'Name'),
-            'patronymic' => Yii::t('app', 'Patronymic'),
+            'surname' => Yii::t('app', 'Фамилия'),
+            'name' => Yii::t('app', 'Имя'),
+            'patronymic' => Yii::t('app', 'Отчество'),
         ];
     }
 

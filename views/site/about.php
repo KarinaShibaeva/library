@@ -107,7 +107,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </a>
             <?php endforeach; ?>
         </div>
-        <a href="<?php echo Url::toRoute(['site/book', 'id'=>$category['id']]); ?>" class="text-dark text-center">Показать еще</a>
+        <a href="<?php echo Url::toRoute(['site/book', 'id'=>$category['id']]); ?>" class="text-dark text-center mb-3">Показать еще</a>
     <?php endforeach; ?>
     </div>
 </div>

@@ -3,7 +3,7 @@
 /** @var yii\web\View $this */
 /** @var yii\bootstrap5\ActiveForm $form */
 
-/** @var app\models\Records $model */
+/** @var app\models\Application $model */
 
 use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;
@@ -18,10 +18,6 @@ $this->title = 'Отправка заявки на продление книги
 
 ?>
 <style>
-    .btn{
-        background: #745544;
-        color: white;
-    }
     body{
         background-image: url("../images/app.jpg");
         background-size: cover;
@@ -65,7 +61,7 @@ $this->title = 'Отправка заявки на продление книги
             </div>
             <div class="form-group">
                 <div>
-                    <?= Html::submitButton('Отправить', ['class' => 'btn btn-light', 'name' => 'login-button']) ?>
+                    <?= Html::submitButton('Отправить', ['class' => 'btn btn-light', 'style' => 'background: #745544; color: white;', 'name' => 'login-button']) ?>
                 </div>
             </div>
 

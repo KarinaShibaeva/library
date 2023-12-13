@@ -20,7 +20,7 @@ $this->title = '';
     }
     .media-body .author {
         display: block;
-        font-size: 1.4rem;
+        font-size: 1.2rem;
         color: #000000;
         font-weight: 700;
     }
@@ -47,13 +47,12 @@ $this->title = '';
 </style>
 
 <div class="content d-flex flex-column justify-content-center align-items-center" style="background-color: #eee4e4">
-    <div class="d-flex flex-column w-75 mt-5">
-        <div class="mt-4 d-flex flex-row">
+    <div class="d-flex flex-column w-75 mt-3">
+        <div class="mt-3 d-flex flex-row">
             <?php foreach ($new as $news):?>
-                <img src="../images/<?php echo $news['image']?>" class="w-100 h-100 shadow mb-5 rounded">
                 <div class="d-flex flex-column ms-5">
-                    <h3><?= $news->title ?></h3>
-                    <p><?= $news->content ?></p>
+                    <h3 class="text-start"><?= $news->title ?></h3>
+                    <p><img src="../images/<?php echo $news['image']?>" class=" w-50 shadow mb-5 rounded" style=" float:left; margin: 4px 10px 2px 0;"> <?= $news->content ?></p>
                     <p><?= $news->date ?></p>
                 </div>
         </div>
@@ -107,5 +106,5 @@ $this->title = '';
 </div>
 <?php endif;?>
 <?php endforeach;?>
-    </div>
+</div>
 </div>

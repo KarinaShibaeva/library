@@ -55,14 +55,14 @@ class Book extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'name' => Yii::t('app', 'Name'),
-            'description' => Yii::t('app', 'Description'),
-            'author_id' => Yii::t('app', 'Author ID'),
-            'year' => Yii::t('app', 'Year'),
-            'genre_id' => Yii::t('app', 'Genre ID'),
-            'publishing_house_id' => Yii::t('app', 'Publishing House ID'),
-            'image' => Yii::t('app', 'Image'),
-            'date_add' => Yii::t('app', 'Date Add'),
+            'name' => Yii::t('app', 'Название'),
+            'description' => Yii::t('app', 'Описание'),
+            'author_id' => Yii::t('app', 'Автор'),
+            'year' => Yii::t('app', 'Год издания'),
+            'genre_id' => Yii::t('app', 'Жанр'),
+            'publishing_house_id' => Yii::t('app', 'Издательство'),
+            'image' => Yii::t('app', 'Картинка'),
+            'date_add' => Yii::t('app', 'Дата добавления'),
         ];
     }
 

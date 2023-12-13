@@ -75,10 +75,10 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <main id="main" role="main">
     <div class="content" style="margin-top: 3rem">
         <?= $content ?>
-        <footer class="text-white text-center text-lg-start" style="background-color: #583c2d">
+        <footer class="text-white text-center text-lg-start" style="background-color: #583c2d;">
             <div class="container p-4">
-                <div class="d-flex flex-row">
-                    <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                <div class="d-flex flex-row justify-content-between align-items-start">
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
                         <h5 class="text-uppercase fw-bold" style="font-family: Century Gothic;">Контакты</h5>
                         <p><b>Адрес:</b> г.Москва, улица Ленина, 25б</p>
                         <p><b>Телефон:</b> (1513) 77-77-77</p>

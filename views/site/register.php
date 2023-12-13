@@ -11,10 +11,6 @@ $this->title = 'Регистрация';
 
 ?>
 <style>
-    .btn{
-        background: #745544;
-        color: white;
-    }
     body{
         background-image: url("../images/reg.jpg");
         background-size: cover;
@@ -61,7 +57,7 @@ $this->title = 'Регистрация';
 
                 <div class="form-group mt-3">
                     <div>
-                        <?= Html::submitButton('Зарегистрироваться', ['class' => 'btn btn-light', 'name' => 'login-button']) ?>
+                        <?= Html::submitButton('Зарегистрироваться', ['class' => 'btn btn-light', 'style' => 'background: #745544; color: white;', 'name' => 'login-button']) ?>
                     </div>
                 </div>
 
