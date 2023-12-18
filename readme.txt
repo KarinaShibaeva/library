@@ -4,6 +4,8 @@ HTTP: Apache_2.4-PHP_8.0-8.1+Nginx_1.23
 Вход в БД:
 'username' => 'lib'
 'password' => '123456'
+GitHub: https://github.com/KarinaShibaeva/library
+Хостинг: https://library.kpk45.ru/web/site/index
 
 
 Возможности пользователя:
